@@ -55,7 +55,7 @@ ansible --version && \
 
 # still to add gke-anthos binary
 # clean up
-rm -rf /tmp/* && rm -rf /var/tmp/*
+rm -rf /tmp/*
 
 
 
