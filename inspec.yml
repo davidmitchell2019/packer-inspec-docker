@@ -1,0 +1,9 @@
+---
+name: test-installs
+title: test installs
+maintainer: LSEG
+copyright: LSEG
+summary: Test suite for installs
+version: 0.1
+supports:
+    - os-family: linux

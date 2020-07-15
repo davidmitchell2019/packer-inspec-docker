@@ -1,0 +1,27 @@
+{
+    "variables": {
+    "terraform_version": "0.12.28"
+  },
+    "builders": [
+      {
+        "type": "docker",
+        "image": "alpine",
+        "commit": "true",
+        "pull": "true",
+        "changes": [
+          "ENV PATH=/usr/lib/google-cloud-sdk/bin:$PATH"
+        ]
+      }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "install.sh"
+        },
+        {
+            "type": "inspec",
+            "inspec_env_vars": [ "CHEF_LICENSE=accept"],
+            "profile": "./controls"
+        }
+    ]
+ }
