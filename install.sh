@@ -1,3 +1,4 @@
+set -eu -o pipefail -o failglob
 #version tools
 export GCLOUD_VERSION=298.0.0
 export PACKER_VERSION=1.6.0
