@@ -5,13 +5,7 @@ control 'os family' do
    it { should eq 'linux' }
   end
 end
-control 'os name' do
-  impact 1.0
-  title 'os name should be alpine'
-  describe os.family do
-   it { should eq 'alpine' }
-  end
-end
+
 control 'aws-cli' do
   impact 1.0
   title 'aws-cli should be installed'
@@ -19,6 +13,7 @@ control 'aws-cli' do
     it { should be_installed }
   end
 end
+
 control 'py3-yaml' do
   impact 1.0
   title 'py3-yaml should be installed'
@@ -26,6 +21,7 @@ control 'py3-yaml' do
     it { should be_installed }
   end
 end
+
 control 'py3-s3transfer' do
   impact 1.0
   title 'py3-s3transfer should be installed'
@@ -33,6 +29,7 @@ control 'py3-s3transfer' do
     it { should be_installed }
   end
 end
+
 control 'py3-rsa' do
   impact 1.0
   title 'py3-rsa should be installed'
@@ -40,6 +37,7 @@ control 'py3-rsa' do
     it { should be_installed }
   end
 end
+
 control 'py3-jmespath' do
   impact 1.0
   title 'py3-jmespath should be installed'
@@ -47,6 +45,7 @@ control 'py3-jmespath' do
     it { should be_installed }
   end
 end
+
 control 'py3-docutils' do
   impact 1.0
   title 'py3-docutils should be installed'
@@ -54,6 +53,7 @@ control 'py3-docutils' do
     it { should be_installed }
   end
 end
+
 control 'py3-colorama' do
   impact 1.0
   title 'py3-colorama should be installed'
@@ -61,13 +61,23 @@ control 'py3-colorama' do
     it { should be_installed }
   end
 end
+
 control 'terraform' do
   impact 1.0
   title 'terraform should be installed'
-  describe package('terraform') do
-    it { should be_installed }
+  describe file('/usr/bin/terraform') do
+    it { should exist }
   end
 end
+
+control 'packer' do
+  impact 1.0
+  title 'terraform should be installed'
+  describe file('/usr/bin/packer') do
+    it { should exist }
+  end
+end
+
 control 'py3-botocore' do
   impact 1.0
   title 'py3-botocore should be installed'
@@ -75,6 +85,7 @@ control 'py3-botocore' do
     it { should be_installed }
   end
 end
+
 control 'aws-cli' do
   impact 1.0
   title 'aws-cli should be installed'
@@ -82,6 +93,7 @@ control 'aws-cli' do
     it { should be_installed }
   end
 end
+
 control 'ruby-webrick' do
   impact 1.0
   title 'ruby-webrick should be installed'
@@ -89,6 +101,7 @@ control 'ruby-webrick' do
     it { should be_installed }
   end
 end
+
 control 'python3' do
   impact 1.0
   title 'python3 should be installed'
@@ -96,13 +109,7 @@ control 'python3' do
     it { should be_installed }
   end
 end
-control 'ansible' do
-  impact 1.0
-  title 'ansible should be installed'
-  describe package('ansible') do
-    it { should be_installed }
-  end
-end
+
 control 'groff' do
   impact 1.0
   title 'groff should be installed'
@@ -110,31 +117,36 @@ control 'groff' do
     it { should be_installed }
   end
 end
-control 'bundler' do
+
+control 'gcloud' do
   impact 1.0
-  title 'bundler should be installed'
-  describe gem('gem_package_name', 'bundler') do
-  it { should be_installed }
+  title 'gcloud should be installed'
+  describe file('/usr/lib/google-cloud-sdk/bin/gcloud') do
+  it { should exist }
   end
 end
-control 'json' do
+
+control 'kubectl' do
   impact 1.0
-  title 'json should be installed'
-  describe gem('gem_package_name', 'json') do
-  it { should be_installed }
+  title 'kubectl should be installed'
+  describe file('/usr/lib/google-cloud-sdk/bin/kubectl') do
+  it { should exist }
   end
 end
-control 'method_source' do
+
+control 'inspec' do
   impact 1.0
-  title 'method_source should be installed'
-  describe gem('gem_package_name', 'method_source') do
-  it { should be_installed }
+  title 'inspec should be installed'
+  describe file('/usr/lib/ruby/gems/2.7.0/gems/inspec-4.21.3') do
+  it { should exist }
   end
 end
-control 'rake' do
+
+control 'ansible' do
   impact 1.0
-  title 'rake should be installed'
-  describe gem('gem_package_name', 'rake') do
-  it { should be_installed }
+  title 'ansible should be installed'
+  describe file('/usr/bin/ansible') do
+  it { should exist }
   end
 end
+

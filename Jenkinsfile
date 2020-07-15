@@ -5,7 +5,14 @@ agent{
        NULL="nothing"
     }
     stages {
-     stage("packer validate") {
+    stage("verify pre requs installed on jenkins") {
+        steps {
+            sh 'docker version'
+            sh 'packer version'
+            sh 'inspec version'
+        }
+    }
+    stage("packer validate") {
         steps {
             sh 'packer validate packer.json'
         }

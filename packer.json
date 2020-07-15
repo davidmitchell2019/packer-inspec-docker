@@ -1,6 +1,7 @@
 {
     "variables": {
-    "terraform_version": "0.12.28"
+    "repo" : "davidgordonmitchell/aws-gcloud-kubectl-terraform",
+    "tag"  : "0.1"
   },
     "builders": [
       {
@@ -23,5 +24,15 @@
             "inspec_env_vars": [ "CHEF_LICENSE=accept"],
             "profile": "./controls"
         }
+    ],
+    "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{user `repo`}}",
+        "tag": "{{user `tag`}}"
+      },
+      "docker-push"
     ]
+  ]
  }
