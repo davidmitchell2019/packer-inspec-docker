@@ -1,8 +1,8 @@
 ---
 name: test-installs
 title: test installs
-maintainer: LSEG
-copyright: LSEG
+maintainer: Dmitchell
+copyright: Dmitchell
 summary: Test suite for installs
 version: 0.1
 supports:
