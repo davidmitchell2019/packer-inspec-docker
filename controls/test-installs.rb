@@ -72,7 +72,7 @@ end
 
 control 'packer' do
   impact 1.0
-  title 'terraform should be installed'
+  title 'packer should be installed'
   describe file('/usr/bin/packer') do
     it { should exist }
   end
