@@ -1,11 +1,5 @@
 set -eu -o pipefail
-#version tools
-#export GCLOUD_VERSION=298.0.0
-#export PACKER_VERSION=1.6.0
-#export TERRAFORM_VERSION=0.12.28
-#export INSPEC_VERSION=4.21.3
-#export INSPECBIN_VERSION=4.21.3
-#export ANSIBLE_VERSION=2.9.10
+
 #update and upgrade me
 apk update && apk upgrade
 
