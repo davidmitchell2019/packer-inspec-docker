@@ -1,15 +1,39 @@
-control 'os family' do
-  impact 1.0
-  title 'os family should be linux'
-  describe os.family do
-   it { should eq 'linux' }
-  end
-end
-
 control 'aws-cli' do
   impact 1.0
   title 'aws-cli should be installed'
   describe package('aws-cli') do
+    it { should be_installed }
+  end
+end
+
+control 'curl' do
+  impact 1.0
+  title 'curl should be installed'
+  describe package('curl') do
+    it { should be_installed }
+  end
+end
+
+control 'wget' do
+  impact 1.0
+  title 'wget should be installed'
+  describe package('wget') do
+    it { should be_installed }
+  end
+end
+
+control 'make' do
+  impact 1.0
+  title 'make should be installed'
+  describe package('make') do
+    it { should be_installed }
+  end
+end
+
+control 'bash' do
+  impact 1.0
+  title 'bash should be installed'
+  describe package('bash') do
     it { should be_installed }
   end
 end
@@ -150,3 +174,26 @@ control 'ansible' do
   end
 end
 
+control 'ansible again' do
+  impact 1.0
+  title 'ansible should be installed'
+  describe pip('ansible') do
+  it { should be_installed }
+  end
+end
+
+control 'ansible lint' do
+  impact 1.0
+  title 'ansible lint should be installed'
+  describe pip('ansible-lint') do
+  it { should be_installed }
+  end
+end
+
+control 'pip' do
+  impact 1.0
+  title 'pip should be installed'
+  describe pip('pip') do
+  it { should be_installed }
+  end
+end

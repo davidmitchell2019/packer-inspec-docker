@@ -12,6 +12,11 @@
     ],
     "provisioners": [
         {
+            "type": "inspec",
+            "inspec_env_vars": [ "CHEF_LICENSE=accept"],
+            "profile": "./pre-install-controls"
+        },
+        {
             "type": "shell",
             "environment_vars": [
                "GCLOUD_VERSION={{user `gcloud_version`}}",
@@ -26,7 +31,7 @@
         {
             "type": "inspec",
             "inspec_env_vars": [ "CHEF_LICENSE=accept"],
-            "profile": "./controls"
+            "profile": "./post-install-controls"
         }
     ],
     "post-processors": [
