@@ -14,7 +14,7 @@ agent{
     }
     stage("packer validate") {
         steps {
-            sh 'packer validate packer.json'
+            sh 'packer validate -var-file=variables.json packer.json'
         }
     }
     stage("packer build") {
