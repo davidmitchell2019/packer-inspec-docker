@@ -1,0 +1,9 @@
+---
+  -
+    repo: https://github.com/operatehappy/pre-commit-packer
+    rev: 1.0.0
+    hooks:
+
+      - id: packer-validate-and-fix
+        files: packer*.json
+        args: ['-var-file=variables.json']

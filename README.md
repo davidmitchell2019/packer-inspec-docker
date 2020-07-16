@@ -18,6 +18,10 @@ run the below
 
 packer build -var-file=variables.json packer.json
 
+and run your pre commit checks like a good boy
+
+pre-commit run -a
+
 If using AWS ECR use the below for vars for docker push:
 
 https://www.packer.io/docs/post-processors/docker-push
