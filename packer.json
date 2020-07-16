@@ -1,8 +1,4 @@
 {
-    "variables": {
-    "repo" : "davidgordonmitchell/aws-gcloud-kubectl-terraform",
-    "tag"  : "0.1"
-  },
     "builders": [
       {
         "type": "docker",
@@ -17,6 +13,14 @@
     "provisioners": [
         {
             "type": "shell",
+            "environment_vars": [
+               "GCLOUD_VERSION={{user `gcloud_version`}}",
+               "PACKER_VERSION={{user `packer_version`}}",
+               "TERRAFORM_VERSION={{user `terraform_version`}}",
+               "INSPEC_VERSION={{user `inspec_version`}}",
+               "INSPECBIN_VERSION={{user `inspecbin_version`}}",
+               "ANSIBLE_VERSION={{user `ansible_version`}}"
+            ],
             "script": "install.sh"
         },
         {

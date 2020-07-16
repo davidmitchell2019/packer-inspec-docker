@@ -1,9 +1,11 @@
-set -eu -o pipefail -o failglob
+set -eu -o pipefail
 #version tools
-export GCLOUD_VERSION=298.0.0
-export PACKER_VERSION=1.6.0
-export TERRAFORM_VERSION=0.12.28
-
+#export GCLOUD_VERSION=298.0.0
+#export PACKER_VERSION=1.6.0
+#export TERRAFORM_VERSION=0.12.28
+#export INSPEC_VERSION=4.21.3
+#export INSPECBIN_VERSION=4.21.3
+#export ANSIBLE_VERSION=2.9.10
 #update and upgrade me
 apk update && apk upgrade
 
@@ -23,14 +25,15 @@ wget -q -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/${TERRAFO
 
 #install ansible and dependancies
 apk --update add python3-dev libffi-dev openssl-dev build-base
-pip install --upgrade pip cffi && pip install ansible==2.9.10 ansible-lint
+pip install --upgrade pip cffi && pip install ansible==$ANSIBLE_VERSION ansible-lint
 
 # install packages for ruby as inspec dependacy
 apk add openssl openrc ruby ruby-doc ruby-bundler ruby-dev g++ libffi-dev musl-dev
 
 # Install gems for inspec and dependancies
-gem install --no-user-install bundler json method_source rake pry rainbow rspec rspec-its r-train rubyzip thor 'inspec:4.21.3' 'inspec-bin:4.21.3'
-
+gem install --no-user-install bundler json method_source rake pry rainbow rspec rspec-its r-train rubyzip thor
+# Inspec installation
+gem install inspec -v $INSPEC_VERSION && gem install inspec-bin -v $INSPECBIN_VERSION
 # install gcloud
 wget -q -O /tmp/google-cloud-sdk.tgz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz
 tar xzf /tmp/google-cloud-sdk.tgz -C /usr/lib/

@@ -1,0 +1,10 @@
+{
+  "repo": "davidgordonmitchell/packer-docker",
+  "tag": "0.1",
+  "gcloud_version": "298.0.0",
+  "packer_version": "1.6.0",
+  "terraform_version": "0.12.28",
+  "inspec_version": "4.21.3",
+  "inspecbin_version": "4.21.3",
+  "ansible_version": "2.9.10"
+}

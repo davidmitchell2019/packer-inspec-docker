@@ -19,7 +19,7 @@ agent{
     }
     stage("packer build") {
         steps {
-            sh 'packer build packer.json'
+            sh 'packer build -var-file=variables.json packer.json'
         }
     }
     }
