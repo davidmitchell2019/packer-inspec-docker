@@ -7,3 +7,5 @@ summary: Test suite for installs
 version: 0.1
 supports:
     - os-family: linux
+inputs:
+  - name : os-version

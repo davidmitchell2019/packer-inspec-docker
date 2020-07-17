@@ -16,8 +16,8 @@ end
 
 control 'os release' do
   impact 1.0
-  title 'os release should be 3.12.0'
+  title 'os release should be set from packer'
   describe os.release do
-   it { should eq '3.12.0' }
+   it { should eq input('os-release') }
   end
 end

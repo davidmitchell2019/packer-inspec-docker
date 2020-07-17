@@ -14,7 +14,8 @@
         {
             "type": "inspec",
             "inspec_env_vars": [ "CHEF_LICENSE=accept"],
-            "profile": "./pre-install-controls"
+            "profile": "./pre-install-controls",
+            "extra_arguments": ["-l" , "debug" , "--input", "os-release={{user `os-release`}}"]
         },
         {
             "type": "shell",
@@ -31,7 +32,8 @@
         {
             "type": "inspec",
             "inspec_env_vars": [ "CHEF_LICENSE=accept"],
-            "profile": "./post-install-controls"
+            "profile": "./post-install-controls",
+            "extra_arguments": ["-l", "debug"]
         }
     ],
     "post-processors": [
@@ -39,9 +41,13 @@
       {
         "type": "docker-tag",
         "repository": "{{user `repo`}}",
-        "tag": "{{user `tag`}}"
+        "tag": "{{timestamp}}.V{{user `tag`}}"
       },
-      "docker-push"
+      "docker-push",
+      {
+        "type": "shell-local",
+        "inline": ["echo 'Integration testing and looking for image tags found in the repo:' && curl https://registry.hub.docker.com/v2/repositories/{{user `repo`}}/tags/?page=1 2>/dev/null|jq '.\"results\"[][\"name\"]'"]
+      }
     ]
   ]
  }
