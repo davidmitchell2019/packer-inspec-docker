@@ -1,5 +1,10 @@
 set -eu -o pipefail
 
+
+apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+cp ./shared-files/LSEGWebsecurityCA.crt /usr/local/share/ca-certificates/LSEGWebsecurityCA.crt
+update-ca-certificates
+
 #update and upgrade me
 apk update && apk upgrade
 

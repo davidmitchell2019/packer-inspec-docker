@@ -43,10 +43,13 @@
         "repository": "{{user `repo`}}",
         "tag": "{{timestamp}}.V{{user `tag`}}"
       },
-      "docker-push",
       {
-        "type": "shell-local",
-        "inline": ["echo 'Integration testing and looking for image tags found in the repo:' && curl https://registry.hub.docker.com/v2/repositories/{{user `repo`}}/tags/?page=1 2>/dev/null|jq '.\"results\"[][\"name\"]'"]
+        "type": "docker-push",
+        "ecr_login": "true",
+        "aws_access_key": "{{user `aws_access_key`}}",
+        "aws_secret_key": "{{user `aws_secret_key`}}",
+        "aws_token": "{{user `aws_token`}}",
+        "login_server": "{{user `login_server`}}"
       }
     ]
   ]
